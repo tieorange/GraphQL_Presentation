@@ -12,9 +12,10 @@ import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import java.io.File
 
 class NetModule(private val context: Context) {
+
     private fun provideOkHttpClient(): OkHttpClient {
         val builder = Builder()
-                .addInterceptor(ChuckInterceptor(context))
+            .addInterceptor(ChuckInterceptor(context))
 
         if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor()
@@ -36,10 +37,10 @@ class NetModule(private val context: Context) {
 
         //Build the Apollo Client
         return ApolloClient.builder()
-                .serverUrl(BASE_URL)
-                .httpCache(ApolloHttpCache(cacheStore))
-                .okHttpClient(provideOkHttpClient())
-                .build()
+            .serverUrl(BASE_URL)
+            .httpCache(ApolloHttpCache(cacheStore))
+            .okHttpClient(provideOkHttpClient())
+            .build()
     }
 
     internal fun provideGraphQlClient(): GraphQlClient {
