@@ -43,12 +43,10 @@ class MainActivity : AppCompatActivity() {
     ) {
         val data = eventsList.data()?.allEvents()?.map {
             it.fragments().eventBasic()
-        }
-        eventsAdapter.setData(data)
-        logd {
+        } ?: emptyList()
 
-            data
-        }
+        eventsAdapter.setData(data)
+        logd { data }
     }
 
     private fun initFAB() {
@@ -66,4 +64,5 @@ class MainActivity : AppCompatActivity() {
 
         return eventsAdapter
     }
+
 }

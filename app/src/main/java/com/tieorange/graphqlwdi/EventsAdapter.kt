@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import fragment.EventBasic
+import kotlinx.android.synthetic.main.item_event.view.*
 
 class EventsAdapter(val context: Context) : RecyclerView.Adapter<EventViewHolder>() {
 
@@ -31,10 +32,11 @@ class EventsAdapter(val context: Context) : RecyclerView.Adapter<EventViewHolder
 
 }
 
-class EventViewHolder(val itemView: View) : ViewHolder(itemView) {
+class EventViewHolder(itemView: View) : ViewHolder(itemView) {
 
     fun bind(event: EventBasic) {
-
+        itemView.eventName.text = event.name()
+        itemView.atendeesCount.text = event.attendees()?.size?.toString() ?: "0"
     }
 
 }
